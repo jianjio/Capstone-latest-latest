@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    color: #d1bdc6;
+}
+
+.hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 8), rgba(0, 0, 0, 0.4)),
+        url("/public/pxfuel.jpg");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.card {
+    border: 2px solid #d1bdc6;
+    background-color: #53212b;
+}
+
+footer {
+    background-image: linear-gradient(rgba(0, 0, 0, 8), rgba(0, 0, 0, 0.8)),
+        url("/public/lol.webp");
+    height: 5rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}

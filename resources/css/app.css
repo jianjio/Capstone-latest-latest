@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    color: #d1bdc6;
+}
+
+.hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 8), rgba(0, 0, 0, 0.1)),
+        url("/public/pxfuel.jpg");
+    height: 85vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.background {
+    background-image: linear-gradient(rgba(0, 0, 0, 8), rgba(0, 0, 0, 0.5)),
+        url("/public/pxfuel.jpg");
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.card {
+    /* color:#FD4556: */
+    border: 2px solid #d1bdc6;
+    background-color: #53212b;
+}
+
+footer {
+    background-image: linear-gradient(rgba(0, 0, 0, 8), rgba(0, 0, 0, 0.9)),
+        url("/public/lol.webp");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
