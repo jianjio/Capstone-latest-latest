@@ -17,6 +17,7 @@
             const genreSelect = document.getElementById('genre').value;
             const platformSelect = document.getElementById('platform').value;
             const gameCards = document.querySelectorAll('.game-card');
+            let gameFound = false;
 
             gameCards.forEach(card => {
                 const title = card.querySelector('.game-title').innerText.toLowerCase();
@@ -27,8 +28,22 @@
                 const matchesGenre = genreSelect === 'all' || genre === genreSelect;
                 const matchesPlatform = platformSelect === 'all' || platform === platformSelect;
 
-                card.style.display = matchesSearch && matchesGenre && matchesPlatform ? 'block' : 'none';
+                // If game matches all the filters, show it
+                if (matchesSearch && matchesGenre && matchesPlatform) {
+                    card.style.display = 'block';
+                    gameFound = true;
+                } else {
+                    card.style.display = 'none';
+                }
             });
+
+            // Show "Game Not Found" message if no game matches the search criteria
+            const noGameFoundCard = document.getElementById('noGameFound');
+            if (!gameFound) {
+                noGameFoundCard.style.display = 'block';
+            } else {
+                noGameFoundCard.style.display = 'none';
+            }
         }
 
         function showModal() {
@@ -90,9 +105,7 @@
             <select id="platform" onchange="filterGames()" class="border bg-slate-400 border-custom-red text-black rounded">
                 <option value="all" class="text-black">All Platforms</option>
                 <option value="mobile" class="text-black">Mobile</option>
-                <option value="pc" class="text-black">PC</option>
-                
-               
+                <option value="PC (Windows)" class="text-black">PC</option>
             </select>
         </div>
 
@@ -127,7 +140,14 @@
                 </div>
             @endforeach
         </div>
+
+        {{-- Game Not Found Card --}}
+        <div id="noGameFound" class="hidden w-full text-center mt-8">
+            <div class="card bg-gray-800 text-white p-6 rounded-lg shadow-md">
+                <h3 class="text-2xl">Game Not Found</h3>
+                <p>Sorry, we couldn't find any games matching your search criteria.</p>
+            </div>
+        </div>
     </div>
 </body>
 </html>
-@include('profile.partials._footer')
