@@ -151,3 +151,4 @@
     </div>
 </body>
 </html>
+@include('profile.partials._footer')
