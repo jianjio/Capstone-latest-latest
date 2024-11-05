@@ -3,10 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
     <title>GameDev</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Protest+Guerrilla&display=swap" rel="stylesheet">
@@ -14,7 +12,9 @@
     <link rel="icon" href="{{ asset('logo-footer.png') }}" type="image/x-icon">
 </head>
 <body class="bg-black font-poppins" x-data="{ open: false }">
+
     <!-- Header -->
+
     <header class="bg-transparent py-8">
         <div class="container mx-auto flex justify-between items-center px-4">
             <a href="/" class="text-gray-400 text-6xl uppercase tracking-wide font-protest">
@@ -57,7 +57,7 @@
             @endif
         </div>
     </div>
-
+{{-- hero section  --}}
     <section class="hero text-center content-center">
         <div class="container mx-auto px-2">
             <h1 class="md:text-9xl text-8xl tracking-widest font-protest text-[#D1BDC6]">GAMEDEV</h1>

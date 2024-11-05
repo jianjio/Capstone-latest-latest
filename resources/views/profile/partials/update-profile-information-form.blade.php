@@ -1,21 +1,32 @@
 <section>
+
+    {{-- header of Profile settings.update profile  --}}
+
     <header>
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-            {{ __('Update Profile') }}
+            {{ __('Update Profile Information') }}
         </h2>
+
+        {{-- short description update profile  --}}
 
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
             {{ __("Update your profile information and email address.") }}
         </p>
     </header>
 
+    {{-- verifying the email--routes to AUTH.PHP --}}
+
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
         @csrf
     </form>
 
+    {{-- updating the profile  --}}
+
     <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
         @csrf
         @method('patch')
+
+        {{-- input of the name --}}
 
         <div>
             <x-input-label for="name" :value="__('Name')" />
@@ -23,10 +34,14 @@
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
 
+        {{-- input of the email  --}}
+
         <div>
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
+
+                {{-- for unverified emails  --}}
 
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
                 <div>
@@ -38,6 +53,8 @@
                         </button>
                     </p>
 
+                    {{-- verification for the updated email  --}}
+
                     @if (session('status') === 'verification-link-sent')
                         <p class="mt-2 font-medium text-sm text-green-600 dark:text-green-400">
                             {{ __('A new verification link has been sent to your email address.') }}
@@ -47,8 +64,12 @@
             @endif
         </div>
 
+        {{-- to save the updated profile  --}}
+
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
+
+            {{-- showing the profile is saved  --}}
 
             @if (session('status') === 'profile-updated')
                 <p

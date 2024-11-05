@@ -1,3 +1,7 @@
+
+{{-- MODAL FUNCTIONALITY  --}}
+
+
 @props([
     'name',
     'show' => false,

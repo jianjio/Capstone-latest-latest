@@ -9,3 +9,6 @@ $classes = ($active ?? false)
 <a {{ $attributes->merge(['class' => $classes]) }}>
     {{ $slot }}
 </a>
+
+
+{{-- THE RESPONSIVE NAVLINK THAT DROPDOWNS FROM THE BURGER MENU --}}

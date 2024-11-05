@@ -58,6 +58,7 @@
     </script>
 </head>
 <body class="bg-black font-poppins">
+    {{-- hero section  --}}
     <section class="hero text-center content-center">
         <div class="container mx-auto px-4">
             <h1 class="md:text-9xl text-8xl tracking-widest uppercase font-protest text-[#D1BDC6] mb-4">Games</h1>
@@ -66,6 +67,8 @@
             </p>
         </div>
     </section>
+
+{{-- modal for successfully added to library  --}}
 
     <div class="container mx-auto mt-10">
         @if (session('success'))
@@ -94,6 +97,7 @@
             <input type="text" id="search" placeholder="Search games..." oninput="filterGames()" class="border bg-slate-400 border-custom-red text-black rounded p-2 w-1/3" />
             
             {{-- Genre Filter --}}
+
             <select id="genre" onchange="filterGames()" class="border bg-slate-400 border-custom-red text-black rounded">
                 <option value="all" class="text-black">All Genres</option>
                 @foreach($genres as $genre)
@@ -102,6 +106,7 @@
             </select>
             
             {{-- Platforms --}}
+
             <select id="platform" onchange="filterGames()" class="border bg-slate-400 border-custom-red text-black rounded">
                 <option value="all" class="text-black">All Platforms</option>
                 <option value="mobile" class="text-black">Mobile</option>
@@ -110,16 +115,26 @@
         </div>
 
         {{-- GAME CARDS --}}
+
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mt-12">
             @foreach($games as $game)
                 <div class="card game-card bg-custom-red rounded-lg overflow-hidden" data-genre="{{ $game->genre }}" data-platform="{{ $game->platform }}">
+
+                    {{-- game image  --}}
+
                     @if($game->thumbnail)
                         <img src="{{ $game->thumbnail }}" alt="{{ $game->title }}" class="w-full border-b border-[#d1bdc6]">
                     @else
+
+                    {{-- if no image  --}}
+
                         <div class="w-full h-48 bg-gray-200 flex items-center justify-center">
                             <span class="text-gray-500">No Image Available</span>
                         </div>
                     @endif
+
+                    {{-- about the game  --}}
+
                     <div class="p-6">
                         <h3 class="game-title text-2xl text-white font-semibold text-center uppercase mb-4">{{ $game->title }}</h3>
                         <p class="text-white mb-4">{{ $game->short_description }}</p>
@@ -130,7 +145,13 @@
                         </ul>
                     </div>
                     <div class="m-4">
+
+                        {{-- game link button --}}
+
                         <a href="{{ $game->game_url }}" target="_blank" rel="noopener noreferrer" class="inline-block bg-red-600 text-white px-4 py-2 rounded text-sm hover:bg-red-700 transition duration-300">View Game</a>
+
+                        {{-- add to library button --}}
+
                         <button onclick="event.preventDefault(); document.getElementById('add-form-{{ $game->id }}').submit();" class="inline-block bg-red-600 text-white px-4 py-2 rounded text-sm hover:bg-red-700 transition duration-300">Add to Library</button>
                         <form id="add-form-{{ $game->id }}" action="{{ route('library.add') }}" method="POST" style="display: none;">
                             @csrf
@@ -142,6 +163,7 @@
         </div>
 
         {{-- Game Not Found Card --}}
+        
         <div id="noGameFound" class="hidden w-full text-center mt-8">
             <div class="card bg-gray-800 text-white p-6 rounded-lg shadow-md">
                 <h3 class="text-2xl">Game Not Found</h3>
