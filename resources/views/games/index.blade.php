@@ -15,16 +15,19 @@
         function filterGames() {
             const searchInput = document.getElementById('search').value.toLowerCase();
             const genreSelect = document.getElementById('genre').value;
+            const platformSelect = document.getElementById('platform').value;
             const gameCards = document.querySelectorAll('.game-card');
 
             gameCards.forEach(card => {
                 const title = card.querySelector('.game-title').innerText.toLowerCase();
                 const genre = card.getAttribute('data-genre');
+                const platform = card.getAttribute('data-platform');
 
                 const matchesSearch = title.includes(searchInput);
                 const matchesGenre = genreSelect === 'all' || genre === genreSelect;
+                const matchesPlatform = platformSelect === 'all' || platform === platformSelect;
 
-                card.style.display = matchesSearch && matchesGenre ? 'block' : 'none';
+                card.style.display = matchesSearch && matchesGenre && matchesPlatform ? 'block' : 'none';
             });
         }
 
@@ -42,10 +45,10 @@
 <body class="bg-black font-poppins">
     <section class="hero text-center content-center">
         <div class="container mx-auto px-4">
-          <h1 class="md:text-9xl text-8xl tracking-widest uppercase font-protest text-[#D1BDC6] mb-4">Games</h1>
-          <p class="md:text-2xl text-xl tracking-wide text-blue-500 uppercase mb-8">
-            Discover the Best Free-To-Play Games with Ease!
-          </p>
+            <h1 class="md:text-9xl text-8xl tracking-widest uppercase font-protest text-[#D1BDC6] mb-4">Games</h1>
+            <p class="md:text-2xl text-xl tracking-wide text-blue-500 uppercase mb-8">
+                Discover the Best Free-To-Play Games with Ease!
+            </p>
         </div>
     </section>
 
@@ -74,18 +77,29 @@
         {{-- SEARCH BAR --}}
         <div class="mb-5 flex gap-6">
             <input type="text" id="search" placeholder="Search games..." oninput="filterGames()" class="border bg-slate-400 border-custom-red text-black rounded p-2 w-1/3" />
+            
+            {{-- Genre Filter --}}
             <select id="genre" onchange="filterGames()" class="border bg-slate-400 border-custom-red text-black rounded">
                 <option value="all" class="text-black">All Genres</option>
                 @foreach($genres as $genre)
                     <option value="{{ $genre }}" class="border border-custom-red text-black rounded">{{ $genre }}</option>
                 @endforeach
             </select>
+            
+            {{-- Platforms --}}
+            <select id="platform" onchange="filterGames()" class="border bg-slate-400 border-custom-red text-black rounded">
+                <option value="all" class="text-black">All Platforms</option>
+                <option value="mobile" class="text-black">Mobile</option>
+                <option value="pc" class="text-black">PC</option>
+                
+               
+            </select>
         </div>
 
         {{-- GAME CARDS --}}
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mt-12">
             @foreach($games as $game)
-                <div class="card game-card bg-custom-red rounded-lg overflow-hidden" data-genre="{{ $game->genre }}">
+                <div class="card game-card bg-custom-red rounded-lg overflow-hidden" data-genre="{{ $game->genre }}" data-platform="{{ $game->platform }}">
                     @if($game->thumbnail)
                         <img src="{{ $game->thumbnail }}" alt="{{ $game->title }}" class="w-full border-b border-[#d1bdc6]">
                     @else
@@ -99,6 +113,7 @@
                         <ul class="space-y-2">
                             <li><strong>Genre:</strong> {{ $game->genre }}</li>
                             <li><strong>Release Date:</strong> {{ $game->release_date }}</li>
+                            <li><strong>Platform:</strong> {{ ucfirst($game->platform) }}</li>
                         </ul>
                     </div>
                     <div class="m-4">
@@ -113,7 +128,6 @@
             @endforeach
         </div>
     </div>
-    
 </body>
 </html>
 @include('profile.partials._footer')
