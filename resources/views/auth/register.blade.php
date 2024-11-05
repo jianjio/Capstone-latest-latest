@@ -9,21 +9,6 @@
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
-        {{-- age --}}
-        <div class="flex inline-flex gap-3">
-        <div>
-            <x-input-label class="mt-4 ml-3" for="age" :value="__('Age')" />
-            <x-text-input id="age" class="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
-        </div>
-
-        {{-- gender --}}
-        <div>
-            <x-input-label class="mt-4 ml-3" for="gender" :value="__('Gender')" />
-            <x-text-input id="gender" class="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
-        </div>
-    </div>
         <!-- Email Address -->
         <div class="mt-4">
             <x-input-label class="ml-3" for="email" :value="__('Email')" />
