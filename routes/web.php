@@ -25,6 +25,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/games', [GameController::class, 'index']);
+
 Route::get('/library', function () {
     return view('library');
 })->middleware(['auth', 'verified'])->name('library');
@@ -40,9 +42,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/library', [LibraryController::class, 'index'])->name('library.index');
 });
 
-
 require __DIR__.'/auth.php';
 
-Route::get('/games', [GameController::class, 'index']);
 
 

@@ -6,7 +6,7 @@
         <!-- Name input -->
 
         <div>
-            <x-input-label class="mt-4 ml-3" for="name" :value="__('Name')" />
+            <x-input-label class="mt-4 ml-3" for="name" :value="__('Username')" />
             <x-text-input id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
