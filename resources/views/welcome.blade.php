@@ -24,7 +24,7 @@
                 @if (Route::has('login'))
                     <div class="hidden md:flex space-x-10 sm:top-2 sm:right-0 p-6 text-right z-10">
                         @auth
-                            <a href="{{ url('/dashboard') }}" class="font-semibold text-xl text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm uppercase focus:outline-red-500">Dashboard</a>
+                            <a href="{{ url('/dashboard') }}" class="font-semibold text-2xl text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm uppercase focus:outline-red-500"><i class="fa-solid fa-play"></i> Dashboard</a>
                         @else
                             <a href="{{ route('login') }}" class="text-2xl text-neutral-500 hover:text-gray-300">Log in</a>
                             @if (Route::has('register'))
