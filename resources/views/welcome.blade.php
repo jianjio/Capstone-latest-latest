@@ -26,9 +26,9 @@
                         @auth
                             <a href="{{ url('/dashboard') }}" class="font-semibold text-2xl text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm uppercase focus:outline-red-500"><i class="fa-solid fa-play"></i> Dashboard</a>
                         @else
-                            <a href="{{ route('login') }}" class="text-2xl text-neutral-500 hover:text-gray-300">Log in</a>
+                            <a href="{{ route('login') }}" class="text-2xl text-neutral-500 hover:text-gray-300"><i class="fa-solid fa-right-to-bracket"></i> Log in</a>
                             @if (Route::has('register'))
-                                <a href="{{ route('register') }}" class="text-2xl text-neutral-500 hover:text-gray-300">Register</a>
+                                <a href="{{ route('register') }}" class="text-2xl text-neutral-500 hover:text-gray-300"><i class="fa-solid fa-user-plus"></i> Register</a>
                             @endif
                         @endauth
                     </div>
