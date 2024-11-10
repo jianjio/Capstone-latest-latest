@@ -31,7 +31,7 @@
                         <x-slot name="trigger">
                             <button class="inline-flex items-center px-3 rounded bg-transparent text-2xl text-gray-300 hover:bg-neutral-500">
                                 <div class="mr-2 text-2xl"><i class="fa-solid fa-user"></i></div>
-                                <div class="text-xl">{{ Auth::user()->name }}</div>
+                                <div class="text-xl">Welcome, {{ Auth::user()->name }}</div>
                             </button>
                         </x-slot>
 
